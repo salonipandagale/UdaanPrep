@@ -1,0 +1,75 @@
+/* Page Background with Floating Maths Signs */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #0b0c2a;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+.maths-bg-overlay::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://cdn.pixabay.com/photo/2017/01/30/17/04/formula-2029345_1280.png');
+  background-repeat: repeat;
+  background-size: contain;
+  opacity: 0.03;
+  z-index: 0;
+}
+
+/* Main Page Section */
+.maths-page {
+  position: relative;
+  z-index: 1;
+  padding: 60px 5%;
+  text-align: center;
+}
+
+.maths-page h1 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #ffffff;
+}
+
+/* Chapters Grid */
+.chapters-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.chapters-grid a {
+  display: block;
+  width: 260px;
+  padding: 18px 20px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 12px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, background 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.chapters-grid a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.03);
+  color: #fca311;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .chapters-grid a {
+    width: 90%;
+  }
+
+  .maths-page h1 {
+    font-size: 1.5rem;
+  }
+}
