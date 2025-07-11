@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Portal</title>
+    <!-- Google Font: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style1.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Splash Screen -->
+<div id="splash-screen">
+  <div class="splash-container">
+    <h1 class="splash-text">UdaanPrep</h1>
+    <p class="splash-tagline">Where Preparation Takes Flight<span class="cursor">|</span></p>
+  </div>
+</div>
+
+
+    <!-- Main Website (hidden initially) -->
+    <div id="main-content" style="display: none;">
+
+        <!--Navigation bar-->
+        <nav class="navbar">
+            <ul class="nav-list">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features-grid">Our Features</a></li>
+                <li><a href="available-test.html">Available Test</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#login" class="login-link">Login</a></li>
+            </ul>
+        </nav>
+
+        <!-- Hero Section -->
+        <section  id="home"  class="hero-section">
+            <div class="hero-text">
+                <h1 class="site-title">UdaanPrep</h1>
+                <p class="tagline">Where Preparation Takes Flight</p>
+                <a href="#login" class="cta-button">Login Now</a>
+            </div>
+            <div class="hero-image">
+                <img src="test giv.webp" alt="Student attempting test" />
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section  class="about-section">
+            <div class="about-content">
+                <h2 class="about-fly-up">About UdaanPrep</h2>
+                <p class="about-fly-up delay-about">
+                    UdaanPrep is a dedicated online test portal for students of Class 10th, 11th, and 12th under the
+                    Maharashtra State Board.
+                    Students can select their grade, subject, and chapter to give personalized tests at their
+                    convenience.
+                    They can also request custom tests on multiple chapters a day in advance.
+                    Through this platform, we aim to simplify and strengthen test preparation, making it more
+                    accessible, flexible, and effective.
+                </p>
+            </div>
+        </section>
+        <!-- Add more as needed -->
+    </div>
+
+    <!-- Script to hide splash screen after 2s -->
+  <script>
+    setTimeout(() => {
+      document.getElementById("splash-screen").style.display = "none";
+      document.getElementById("main-content").style.display = "block";
+    }, 2000);
+  </script>
+
+<!-- Our Features Section -->
+<section id="our features" class="features-section">
+  <h2 class="features-heading">Our Features</h2>
+  <div class="features-grid">
+
+    <!-- Feature 1 -->
+    <a href="give-test.html" class="feature-card">
+      <h3>Give Test</h3>
+      <p>Choose subject, chapter and start testing your knowledge.</p>
+    </a>
+
+    <!-- Feature 2 -->
+    <a href="test-request.html" class="feature-card">
+      <h3>Generate Test Request</h3>
+      <p>Request a custom test with chapters of your choice.</p>
+    </a>
+
+    <!-- Feature 3 -->
+    <a href="mentor-session.html" class="feature-card">
+      <h3>Session with Mentor</h3>
+      <p>Discuss doubts or performance with a mentor anytime.</p>
+    </a>
+
+    <!-- Feature 4 -->
+    <a href="dashboard.html" class="feature-card">
+      <h3>Performance Dashboard</h3>
+      <p>Track your progress, accuracy, and improve continuously.</p>
+    </a>
+
+    <!-- Feature 5 -->
+    <a href="daily-quiz.html" class="feature-card">
+      <h3>Daily Practice Quiz</h3>
+      <p>Quick MCQ sessions to keep you sharp every day.</p>
+    </a>
+
+  </div>
+</section>
+
+<!-- Contact / Footer Section -->
+<footer id="contact" class="footer-section">
+  <div class="footer-container">
+
+    <!-- Contact Info -->
+    <div class="footer-contact">
+      <h2>Contact Us</h2>
+      <p><strong>Email:</strong> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=support@udaanprep.com" target="_blank">support@udaanprep.com</a></p>
+      <p><strong>Phone:</strong> <a href="tel:+917249829792">+91 72498 29792</a></p>
+      <p><strong>Location:</strong> Warud, Maharashtra, India</p>
+    </div>
+
+    
+    <!-- Social Links -->
+    <div class="footer-social">
+      <h3>Connect With Us</h3>
+      <div class="social-icons">
+        <a href="https://wa.me/917249829792" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"> </i></a>
+        <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://t.me" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+        <a href="https://youtube.com" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+
+</body>
+
+</html>

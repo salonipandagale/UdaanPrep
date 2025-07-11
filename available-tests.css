@@ -1,0 +1,114 @@
+/* Gradient Background */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #84a9ff, #e2ceff);
+  min-height: 100vh;
+  color: #14213d;
+}
+
+/* Quote Styling */
+.quote-section {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+}
+/* Typewriter Animation */
+.typewriter {
+  overflow: hidden;
+  border-right: 0.15em solid #fff;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 0.05em;
+  animation: typing 4s steps(50, end) forwards;
+}
+
+.cursor {
+  display: inline-block;
+  color: #fff;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1 }
+  50% { opacity: 0 }
+}
+
+
+/* Class Cards Container */
+.classes-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 30px;
+}
+
+/* Class Cards */
+.class-card {
+  background: #ffffffdd;
+  width: 280px;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.class-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+.class-card h2 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+/* Subject Links */
+.subjects {
+  display: none;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.subjects a {
+  text-decoration: none;
+  background-color: #14213d;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.subjects a:hover {
+  background-color: #1f2b57;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .classes-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .class-card {
+    width: 90%;
+  }
+
+  .quote-section {
+    font-size: 1.2rem;
+  }
+}

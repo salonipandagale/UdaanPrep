@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Available Tests - UdaanPrep</title>
+  <link rel="stylesheet" href="available-tests.css">
+</head>
+<body>
+
+  <!-- Quote Section -->
+<section class="quote-section">
+  <h1 class="typewriter">"Every attempt makes you sharper, stronger, smarter."<span class="cursor">|</span></h1>
+</section>
+
+
+  <!-- Classes Section -->
+  <section class="classes-section">
+    <div class="class-card" onclick="toggleSubjects('class10')">
+      <h2>Class 10</h2>
+      <div class="subjects" id="class10">
+        <a href="subject-pages/class10-maths.html">Maths</a>
+        <a href="subject-pages/class10-science.html">Science</a>
+      </div>
+    </div>
+
+    <div class="class-card" onclick="toggleSubjects('class11')">
+      <h2>Class 11</h2>
+      <div class="subjects" id="class11">
+        <a href="subject-pages/class11-physics.html">Physics</a>
+        <a href="subject-pages/class11-chemistry.html">Chemistry</a>
+        <a href="subject-pages/class11-maths.html">Maths</a>
+        <a href="subject-pages/class11-biology.html">Biology</a>
+      </div>
+    </div>
+
+    <div class="class-card" onclick="toggleSubjects('class12')">
+      <h2>Class 12</h2>
+      <div class="subjects" id="class12">
+        <a href="subject-pages/class12-physics.html">Physics</a>
+        <a href="subject-pages/class12-chemistry.html">Chemistry</a>
+        <a href="subject-pages/class12-maths.html">Maths</a>
+        <a href="subject-pages/class12-biology.html">Biology</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function toggleSubjects(id) {
+      const sections = document.querySelectorAll('.subjects');
+      sections.forEach(section => {
+        if (section.id === id) {
+          section.style.display = section.style.display === "block" ? "none" : "block";
+        } else {
+          section.style.display = "none";
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
