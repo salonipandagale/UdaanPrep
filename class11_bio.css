@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #f0f8ff;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Background Symbols */
+.background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.floating-symbol {
+  position: absolute;
+  font-size: 2rem;
+  animation: float 12s infinite linear;
+  opacity: 0.2;
+  color: #006400;
+}
+
+.floating-symbol:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+.floating-symbol:nth-child(2) { top: 30%; left: 70%; animation-delay: 2s; }
+.floating-symbol:nth-child(3) { top: 60%; left: 10%; animation-delay: 4s; }
+.floating-symbol:nth-child(4) { top: 80%; left: 80%; animation-delay: 6s; }
+.floating-symbol:nth-child(5) { top: 50%; left: 50%; animation-delay: 8s; }
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
+
+/* Content Styling */
+.container {
+  position: relative;
+  z-index: 2;
+  padding: 2rem 1rem;
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+h1 {
+  font-size: 1.8rem;
+  color: #003300;
+  margin-bottom: 2rem;
+}
+
+.chapters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.chapter-card {
+  background-color: #e6ffe6;
+  border-radius: 12px;
+  padding: 1rem;
+  text-decoration: none;
+  color: #004d00;
+  box-shadow: 0 4px 6px rgba(0, 100, 0, 0.2);
+  transition: transform 0.2s, box-shadow 0.3s;
+  font-weight: 600;
+}
+
+.chapter-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 100, 0, 0.3);
+}
+
+/* Request Section */
+.request-section {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.request-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #28a745;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.request-btn:hover {
+  background-color: #218838;
+}
+
+.info-box {
+  background-color: #d4edda;
+  padding: 0.8rem 1rem;
+  border-left: 4px solid #28a745;
+  border-radius: 8px;
+  color: #155724;
+  max-width: 400px;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Responsive tweaks */
+@media (max-width: 500px) {
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  .request-btn {
+    width: 80%;
+  }
+
+  .info-box {
+    width: 90%;
+    font-size: 0.9rem;
+  }
+}
