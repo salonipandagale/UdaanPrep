@@ -15,7 +15,6 @@
   />
 </head>
 <body class="bg-gray-50 font-sans">
-
   <!-- Popup Message -->
   <div id="popup" class="fixed top-4 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-6 py-3 rounded-xl shadow-lg flex items-center gap-3 animate-bounce z-50">
     <span>💡 New here? Check our manual for step-by-step guidance!</span>
@@ -150,57 +149,305 @@
     </div>
   </footer>
 
+  
   <!-- JS -->
   <script>
-    const board = document.getElementById("board");
-    const classSelect = document.getElementById("class");
-    const subject = document.getElementById("subject");
-    const chaptersSection = document.getElementById("chapters-section");
-    const chaptersList = document.getElementById("chapters-list");
-    const questionsSection = document.getElementById("questions-section");
-    const submitBtn = document.getElementById("submit-btn");
+  const board = document.getElementById("board");
+  const classSelect = document.getElementById("class");
+  const subject = document.getElementById("subject");
+  const chaptersSection = document.getElementById("chapters-section");
+  const chaptersList = document.getElementById("chapters-list");
+  const questionsSection = document.getElementById("questions-section");
+  const submitBtn = document.getElementById("submit-btn");
 
-    // Demo Chapters (could be fetched dynamically)
-    const chapters = {
-      "Mathematics": ["Algebra", "Geometry", "Trigonometry", "Probability", "Statistics"],
-      "Science": ["Physics", "Chemistry", "Biology", "Environmental Science"]
-    };
-
-    subject.addEventListener("change", () => {
-      const selected = subject.value;
-      chaptersList.innerHTML = "";
-      if (selected && chapters[selected]) {
-        chapters[selected].forEach(chap => {
-          const div = document.createElement("div");
-          div.innerHTML = `<label class="flex items-center gap-2"><input type="checkbox" value="${chap}" class="chapter-checkbox"> ${chap}</label>`;
-          chaptersList.appendChild(div);
-        });
-        chaptersSection.classList.remove("hidden");
+  // Chapters Database
+  const chapters = {
+    "Maharashtra State Board": {
+      "8th": {
+        "Mathematics": [
+          "Rational and Irrational Numbers",
+          "Parallel Lines and Transversal",
+          "Indices and Cube Root",
+          "Altitudes and Medians of a Triangle",
+          "Expansion Formulae",
+          "Factorisation of Algebraic Expressions",
+          "Variation",
+          "Quadrilateral: Constructions and Types",
+          "Discount and Commission",
+          "Division of Polynomials",
+          "Statistics",
+          "Equations in One Variable",
+          "Congruence of Triangles",
+          "Compound Interest",
+          "Area",
+          "Surface Area and Volume",
+          "Circle – Chord and Arc"
+        ],
+        "Science": [
+          "Living World and Classification of Microbes",
+          "Health and Diseases",
+          "Force and Pressure",
+          "Current Electricity and Magnetism",
+          "Inside the Atom",
+          "Composition of Matter",
+          "Metals and Non-metals",
+          "Pollution",
+          "Disaster Management",
+          "Cell and Cell Organelles",
+          "Human Body and Organ System",
+          "Introduction to Biotechnology",
+          "Introduction to Acid, Bases and Salts",
+          "Chemical Change and Chemical Bond",
+          "Sound",
+          "Reflection of Light",
+          "Man-made Materials",
+          "Ecosystem",
+          "Life Cycle of Stars"
+        ]
+      },
+      "9th": {
+        "Mathematics": [
+          "Mathematics Part 1",
+          "Sets",
+          "Real Numbers",
+          "Polynomials",
+          "Algebraic Identities",
+          "Factorization of Algebraic Expressions",
+          "Linear Equations in Two Variables",
+          "Coordinate Geometry",
+          "Quadratic Equations",
+          "Arithmetic Progression",
+          "Mathematics Part 2",
+          "Similarity",
+          "Pythagoras Theorem",
+          "Circle",
+          "Geometry of Circle",
+          "Surface Area and Volume",
+          "Statistics",
+          "Probability",
+          "Trigonometry",
+          "Mensuration"
+        ],
+        "Science": [
+          "Laws of Motion",
+          "Work and Energy",
+          "Current Electricity",
+          "Measurement of Matter",
+          "Acids, Bases and Salts",
+          "Classification of Elements",
+          "Chemical Bond",
+          "Sound",
+          "Reflection of Light",
+          "Lenses",
+          "Heat",
+          "Heredity and Evolution",
+          "Life Processes in Living Organisms – Part 1",
+          "Life Processes in Living Organisms – Part 2",
+          "Environmental Management",
+          "Practical Chemistry",
+          "Information Communication Technology (ICT)",
+          "Social Health",
+          "Disaster Management",
+          "Economic Importance of Plants"
+        ]
+      },
+      "10th": {
+        "Mathematics": [
+          "Mathematics Part 1",
+          "Linear Equations in Two Variables",
+          "Quadratic Equations",
+          "Arithmetic Progression",
+          "Probability",
+          "Statistics",
+          "Co-ordinate Geometry",
+          "Similarity",
+          "Circles",
+          "Geometric Constructions",
+          "Trigonometry",
+          "Mathematics Part 2",
+          "Trigonometric Ratios",
+          "Trigonometric Identities",
+          "Mensuration",
+          "Co-ordinate Geometry",
+          "Circle",
+          "Statistics",
+          "Probability"
+        ],
+        "Science": [
+          "Gravitation",
+          "Periodic Classification of Elements",
+          "Chemical Reactions and Equations",
+          "Effects of Electric Current",
+          "Heat",
+          "Refraction of Light",
+          "Lenses",
+          "Metallurgy",
+          "Carbon Compounds",
+          "Heredity and Evolution",
+          "Life Processes in Living Organisms – Part 1",
+          "Life Processes in Living Organisms – Part 2",
+          "Environmental Management",
+          "Towards Green Energy",
+          "Animal Classification",
+          "Introduction to Microbiology",
+          "Cell Biology and Biotechnology",
+          "Social Health",
+          "Disaster Management"
+        ]
       }
-    });
-
-    // Show questions section after selecting chapters
-    chaptersList.addEventListener("change", () => {
-      const anyChecked = [...document.querySelectorAll(".chapter-checkbox")].some(cb => cb.checked);
-      if (anyChecked) {
-        questionsSection.classList.remove("hidden");
-        submitBtn.classList.remove("hidden");
-      } else {
-        questionsSection.classList.add("hidden");
-        submitBtn.classList.add("hidden");
+    },
+    "CBSE": {
+      "8th": {
+        "Mathematics": [
+          "Rational Numbers",
+          "Linear Equations in One Variable",
+          "Understanding Quadrilaterals",
+          "Data Handling",
+          "Squares and Square Roots",
+          "Cubes and Cube Roots",
+          "Comparing Quantities",
+          "Algebraic Expressions and Identities",
+          "Mensuration",
+          "Exponents and Powers",
+          "Direct and Inverse Proportions",
+          "Factorisation",
+          "Introduction to Graphs"
+        ],
+        "Science": [
+          "Crop Production and Management",
+          "Microorganisms: Friend and Foe",
+          "Coal and Petroleum",
+          "Combustion and Flame",
+          "Conservation of Plants and Animals",
+          "Reproduction in Animals",
+          "Reaching the Age of Adolescence",
+          "Force and Pressure",
+          "Friction",
+          "Sound",
+          "Chemical Effects of Electric Current",
+          "Some Natural Phenomena",
+          "Light"
+        ]
+      },
+      "9th": {
+        "Mathematics": [
+          "Number Systems",
+          "Polynomials",
+          "Coordinate Geometry",
+          "Linear Equations in Two Variables",
+          "Introduction to Euclid’s Geometry",
+          "Lines and Angles",
+          "Triangles",
+          "Quadrilaterals",
+          "Areas of Parallelograms and Triangles",
+          "Circles",
+          "Constructions",
+          "Heron’s Formula",
+          "Surface Areas and Volumes",
+          "Statistics",
+          "Probability"
+        ],
+        "Science": [
+          "Matter in Our Surroundings",
+          "Is Matter Around Us Pure?",
+          "Atoms and Molecules",
+          "Structure of the Atom",
+          "The Fundamental Unit of Life (Cell)",
+          "Tissues",
+          "Diversity in Living Organisms",
+          "Motion",
+          "Force and Laws of Motion",
+          "Gravitation",
+          "Work and Energy",
+          "Sound",
+          "Why Do We Fall Ill?",
+          "Natural Resources",
+          "Improvement in Food Resources"
+        ]
+      },
+      "10th": {
+        "Mathematics": [
+          "Real Numbers",
+          "Polynomials",
+          "Pair of Linear Equations in Two Variables",
+          "Quadratic Equations",
+          "Arithmetic Progressions",
+          "Triangles",
+          "Coordinate Geometry",
+          "Introduction to Trigonometry",
+          "Applications of Trigonometry",
+          "Circles",
+          "Constructions",
+          "Areas Related to Circles",
+          "Surface Areas and Volumes",
+          "Statistics",
+          "Probability"
+        ],
+        "Science": [
+          "Physics",
+          "Light – Reflection and Refraction",
+          "Human Eye and Colourful World",
+          "Electricity",
+          "Magnetic Effects of Electric Current",
+          "Sources of Energy",
+          "Chemical Reactions and Equations",
+          "Acids, Bases and Salts",
+          "Metals and Non-metals",
+          "Carbon and its Compounds",
+          "Periodic Classification of Elements",
+          "Life Processes",
+          "Control and Coordination",
+          "How do Organisms Reproduce?",
+          "Heredity and Evolution",
+          "Our Environment",
+          "Sustainable Management of Natural Resources"
+        ]
       }
-    });
+    }
+  };
 
-    // Auto-hide popup after 5 seconds
-    setTimeout(() => {
-      document.getElementById("popup").style.display = "none";
-      document.getElementById("arrow").style.display = "none";
-    }, 5000);
+  // Event listener
+  subject.addEventListener("change", () => {
+    const b = board.value;
+    const c = classSelect.value;
+    const s = subject.value;
 
-    // Submit handler
-    submitBtn.addEventListener("click", () => {
-      alert("✅ Your test request has been submitted successfully!");
-    });
-  </script>
+    chaptersList.innerHTML = "";
+    if (b && c && s && chapters[b] && chapters[b][c] && chapters[b][c][s]) {
+      chapters[b][c][s].forEach(chap => {
+        const div = document.createElement("div");
+        div.innerHTML = `<label class="flex items-center gap-2"><input type="checkbox" value="${chap}" class="chapter-checkbox"> ${chap}</label>`;
+        chaptersList.appendChild(div);
+      });
+      chaptersSection.classList.remove("hidden");
+    } else {
+      chaptersSection.classList.add("hidden");
+    }
+  });
+
+  // Show questions section after selecting chapters
+  chaptersList.addEventListener("change", () => {
+    const anyChecked = [...document.querySelectorAll(".chapter-checkbox")].some(cb => cb.checked);
+    if (anyChecked) {
+      questionsSection.classList.remove("hidden");
+      submitBtn.classList.remove("hidden");
+    } else {
+      questionsSection.classList.add("hidden");
+      submitBtn.classList.add("hidden");
+    }
+  });
+
+  // Auto-hide popup after 5s
+  setTimeout(() => {
+    document.getElementById("popup").style.display = "none";
+    document.getElementById("arrow").style.display = "none";
+  }, 5000);
+
+  // Submit
+  submitBtn.addEventListener("click", () => {
+    alert("✅ Your test request has been submitted successfully!");
+  });
+</script>
+
 </body>
 </html>
