@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | UdaanPrep</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+</head>
+<body class="bg-gray-100 font-sans flex items-center justify-center min-h-screen">
+
+  <!-- Login Container -->
+  <div class="bg-white shadow-2xl rounded-2xl w-full max-w-md p-8">
+
+    <!-- Step 1: Choose Role -->
+    <div id="role-selection">
+      <h2 class="text-2xl font-bold text-center mb-6">Login as</h2>
+      <div class="flex flex-col gap-4">
+        <button onclick="chooseRole('student')" class="w-full py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition">
+          <i class="fa-solid fa-user-graduate mr-2"></i> Student
+        </button>
+        <button onclick="chooseRole('teacher')" class="w-full py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700 transition">
+          <i class="fa-solid fa-chalkboard-teacher mr-2"></i> Teacher
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 2: Student Form -->
+    <form id="student-form" class="hidden flex flex-col gap-4 mt-4">
+      <h2 class="text-xl font-semibold text-center">Student Login</h2>
+      <input type="text" placeholder="Full Name" required class="p-3 border rounded-xl">
+      <input type="text" placeholder="Class (e.g., 10th, 11th, 12th)" required class="p-3 border rounded-xl">
+      <input type="tel" placeholder="Contact Number" required class="p-3 border rounded-xl">
+      <button type="submit" class="w-full py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition">
+        Submit
+      </button>
+    </form>
+
+    <!-- Step 2: Teacher Form -->
+    <form id="teacher-form" class="hidden flex flex-col gap-4 mt-4">
+      <h2 class="text-xl font-semibold text-center">Teacher Login</h2>
+      <textarea placeholder="Full Name" required class="p-3 border rounded-xl"></textarea>
+      <textarea placeholder="Contact Number" required class="p-3 border rounded-xl"></textarea>
+      <textarea placeholder="Class (you teach)" required class="p-3 border rounded-xl"></textarea>
+      <textarea placeholder="Subject(s)" required class="p-3 border rounded-xl"></textarea>
+      <button type="submit" class="w-full py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700 transition">
+        Submit
+      </button>
+    </form>
+
+    <!-- Success Message -->
+    <div id="success-message" class="hidden text-center mt-6">
+      <h2 class="text-2xl font-bold text-green-600">✅ Successfully Logged In</h2>
+      <p id="success-text" class="mt-2 text-gray-700"></p>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const roleSelection = document.getElementById("role-selection");
+    const studentForm = document.getElementById("student-form");
+    const teacherForm = document.getElementById("teacher-form");
+    const successMessage = document.getElementById("success-message");
+    const successText = document.getElementById("success-text");
+
+    function chooseRole(role) {
+      roleSelection.classList.add("hidden");
+      if (role === "student") {
+        studentForm.classList.remove("hidden");
+      } else {
+        teacherForm.classList.remove("hidden");
+      }
+    }
+
+    // Student form submission
+    studentForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      studentForm.classList.add("hidden");
+      showSuccess("You can now explore tests of your choice and practice well 🚀");
+      setTimeout(() => {
+        window.location.href = "available-test.html";
+      }, 2000);
+    });
+
+    // Teacher form submission
+    teacherForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      teacherForm.classList.add("hidden");
+      showSuccess("You can now create and request tests for your students 📘");
+      setTimeout(() => {
+        window.location.href = "requestTest.html";
+      }, 2000);
+    });
+
+    function showSuccess(message) {
+      successMessage.classList.remove("hidden");
+      successText.textContent = message;
+    }
+  </script>
+</body>
+</html>

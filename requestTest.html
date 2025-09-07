@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Request Test | UdaanPrep</title>
+
+  <!-- TailwindCSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+</head>
+<body class="bg-gray-50 font-sans">
+
+  <!-- Popup Message -->
+  <div id="popup" class="fixed top-4 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-6 py-3 rounded-xl shadow-lg flex items-center gap-3 animate-bounce z-50">
+    <span>💡 New here? Check our manual for step-by-step guidance!</span>
+  </div>
+
+  <!-- Arrow pointing to help button -->
+  <div id="arrow" class="fixed bottom-20 right-6 text-blue-600 text-4xl animate-bounce z-50">
+    ⬆️
+  </div>
+
+  <!-- Help / Manual Button -->
+  <a href="teacher_manual.pdf" target="_blank" title="Open Teacher Manual"
+    class="fixed bottom-6 right-6 w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-xl hover:bg-blue-700 transition z-40">
+    <i class="fa-solid fa-book-open text-xl"></i>
+  </a>
+
+  <!-- Main Content -->
+  <div class="max-w-4xl mx-auto mt-20 bg-white shadow-lg rounded-2xl p-8">
+    <h1 class="text-2xl font-bold text-center mb-6 text-gray-800">Request a Custom Test</h1>
+
+    <!-- Board & Class Selection -->
+    <div class="grid md:grid-cols-2 gap-6 mb-6">
+      <div>
+        <label class="block mb-2 font-semibold">Select Board</label>
+        <select id="board" class="w-full p-3 border rounded-xl">
+          <option value="" disabled selected>Select Board</option>
+          <option>CBSE</option>
+          <option>Maharashtra State Board</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block mb-2 font-semibold">Select Class</label>
+        <select id="class" class="w-full p-3 border rounded-xl">
+          <option value="" disabled selected>Select Class</option>
+          <option>8th</option>
+          <option>9th</option>
+          <option>10th</option>
+          <option>11th</option>
+          <option>12th</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Subject Selection -->
+    <div class="mb-6">
+      <label class="block mb-2 font-semibold">Select Subject</label>
+      <select id="subject" class="w-full p-3 border rounded-xl">
+        <option value="" disabled selected>Select Subject</option>
+        <option>Mathematics</option>
+        <option>Science</option>
+      </select>
+    </div>
+
+    <!-- Chapter Selection -->
+    <div id="chapters-section" class="hidden mb-6">
+      <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-3 rounded mb-4">
+        📌 You can choose more than one chapter for your test.
+      </div>
+      <label class="block mb-2 font-semibold">Select Chapters</label>
+      <div id="chapters-list" class="grid grid-cols-2 gap-3"></div>
+    </div>
+
+    <!-- Question Type Table -->
+    <div id="questions-section" class="hidden mb-6">
+      <h2 class="text-xl font-semibold mb-3">Choose Question Distribution</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse border">
+          <thead class="bg-gray-200">
+            <tr>
+              <th class="border px-4 py-2">Question Type</th>
+              <th class="border px-4 py-2">Marks / Question</th>
+              <th class="border px-4 py-2">No. of Questions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border px-4 py-2">Very Short Answer</td>
+              <td class="border px-4 py-2 text-center">1 mark</td>
+              <td class="border px-4 py-2"><input type="number" min="0" class="w-full border rounded p-1"></td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">Short Answer (I)</td>
+              <td class="border px-4 py-2 text-center">2 marks</td>
+              <td class="border px-4 py-2"><input type="number" min="0" class="w-full border rounded p-1"></td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">Short Answer (II)</td>
+              <td class="border px-4 py-2 text-center">3 marks</td>
+              <td class="border px-4 py-2"><input type="number" min="0" class="w-full border rounded p-1"></td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">Long Answer</td>
+              <td class="border px-4 py-2 text-center">4 marks</td>
+              <td class="border px-4 py-2"><input type="number" min="0" class="w-full border rounded p-1"></td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">Case Study / Source Based</td>
+              <td class="border px-4 py-2 text-center">4 marks</td>
+              <td class="border px-4 py-2"><input type="number" min="0" class="w-full border rounded p-1"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button id="submit-btn" class="hidden w-full py-3 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition">
+      Submit Request
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-16 bg-gray-800 text-white py-8">
+    <div class="max-w-4xl mx-auto px-6 flex flex-col md:flex-row justify-between">
+      <div>
+        <h2 class="font-bold text-lg">Contact Us</h2>
+        <p>Email: <a href="mailto:udaanprep3@gmail.com" class="underline">udaanprep3@gmail.com</a></p>
+        <p>Phone: <a href="tel:+917249829792" class="underline">+91 72498 29792</a></p>
+        <p>Location: Warud, Maharashtra, India</p>
+      </div>
+      <div class="mt-6 md:mt-0">
+        <h3 class="font-semibold mb-2">Connect With Us</h3>
+        <div class="flex gap-4">
+          <a href="https://wa.me/917249829792" target="_blank"><i class="fab fa-whatsapp text-2xl"></i></a>
+          <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram text-2xl"></i></a>
+          <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin text-2xl"></i></a>
+          <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook text-2xl"></i></a>
+          <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube text-2xl"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    const board = document.getElementById("board");
+    const classSelect = document.getElementById("class");
+    const subject = document.getElementById("subject");
+    const chaptersSection = document.getElementById("chapters-section");
+    const chaptersList = document.getElementById("chapters-list");
+    const questionsSection = document.getElementById("questions-section");
+    const submitBtn = document.getElementById("submit-btn");
+
+    // Demo Chapters (could be fetched dynamically)
+    const chapters = {
+      "Mathematics": ["Algebra", "Geometry", "Trigonometry", "Probability", "Statistics"],
+      "Science": ["Physics", "Chemistry", "Biology", "Environmental Science"]
+    };
+
+    subject.addEventListener("change", () => {
+      const selected = subject.value;
+      chaptersList.innerHTML = "";
+      if (selected && chapters[selected]) {
+        chapters[selected].forEach(chap => {
+          const div = document.createElement("div");
+          div.innerHTML = `<label class="flex items-center gap-2"><input type="checkbox" value="${chap}" class="chapter-checkbox"> ${chap}</label>`;
+          chaptersList.appendChild(div);
+        });
+        chaptersSection.classList.remove("hidden");
+      }
+    });
+
+    // Show questions section after selecting chapters
+    chaptersList.addEventListener("change", () => {
+      const anyChecked = [...document.querySelectorAll(".chapter-checkbox")].some(cb => cb.checked);
+      if (anyChecked) {
+        questionsSection.classList.remove("hidden");
+        submitBtn.classList.remove("hidden");
+      } else {
+        questionsSection.classList.add("hidden");
+        submitBtn.classList.add("hidden");
+      }
+    });
+
+    // Auto-hide popup after 5 seconds
+    setTimeout(() => {
+      document.getElementById("popup").style.display = "none";
+      document.getElementById("arrow").style.display = "none";
+    }, 5000);
+
+    // Submit handler
+    submitBtn.addEventListener("click", () => {
+      alert("✅ Your test request has been submitted successfully!");
+    });
+  </script>
+</body>
+</html>
